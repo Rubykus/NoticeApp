@@ -1,0 +1,14 @@
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">MyApp</a>
+    <ul class="nav navbar-nav navbar-right">
+      <li><%= link_to 'Write Notice', new_notice_path %></li>
+      <% if user_signed_in? %>
+          <li><%= link_to(avatar_for(current_user, size: '25x25'), current_user) %></li>
+          <li><%= link_to 'Log Out', destroy_user_session_path, method: :delete %></li>
+      <% else %>
+          <li><%= link_to 'Sign in/Sign up', new_user_session_path %></li>
+      <% end %>
+    </ul>
+  </div>
+</nav>

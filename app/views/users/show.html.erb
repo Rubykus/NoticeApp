@@ -1,0 +1,36 @@
+<div class="row">
+  <div class="col-xs-2">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <%= avatar_for(@user) %>
+        <%= @user.username %>
+        <%= link_to 'Edit', edit_user_path(@user) %>
+      </div>
+    </div>
+
+    <div class="panel panel-default">
+      Explore
+    </div>
+
+  </div>
+
+  <div class="col-xs-7">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <% render @notices %>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-xs-3">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <p>Categories</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
