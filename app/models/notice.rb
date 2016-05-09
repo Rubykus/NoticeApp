@@ -7,6 +7,9 @@ class Notice < ActiveRecord::Base
 
   delegate :username, to: :user
 
+  default_scope -> { order(created_at: :desc) }
+  COLOR_NOTICE = ["red", "yellow", "green"]
+
   def self.tagged_with(name)
     Tag.find_by!(name: name).notices
   end
@@ -18,7 +21,7 @@ class Notice < ActiveRecord::Base
   end
 
   def all_tags
-    tags.map(&:name).join(", ")
+    tags.collect{|tag| tag.name.lstrip}.uniq.join(",")
   end
 
 end

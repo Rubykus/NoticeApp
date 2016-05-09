@@ -8,7 +8,7 @@
 
         <div class="center-block" style="text-align: center;">
             <%= @user.username %><br>
-            <%= link_to 'Edit', edit_user_path(@user) %>
+            <%= current_user_do link_to 'Edit', edit_user_path(@user)  %>
         </div>
       </div>
     </div>
