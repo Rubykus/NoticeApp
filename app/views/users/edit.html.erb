@@ -1,9 +1,18 @@
-<h1>Edit</h1>
-<%= form_for(@user, html: { multipart: true } ) do |f| %>
-  <%= f.label :username %>
-  <%= f.text_field :username %>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <h1>Edit</h1>
+    <%= form_for(@user, html: { multipart: true } ) do |f| %>
 
-  <%= f.file_field :avatar %>
+      <div class="form-group">
+        <%= f.label :username %><br>
+        <%= f.text_field :username, class: "form-control" %>
+      </div>
 
-  <%= f.submit "Edit" %>
-<% end %>
+      <div class="form-group">
+        <%= f.file_field :avatar %>
+      </div>
+
+      <%= f.submit "Edit", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>

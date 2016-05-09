@@ -3,6 +3,9 @@ class UsersController < ApplicationController
   before_action :check_authorization, only: [:edit, :update]
   before_action :set_user
   def index
+    if user_signed_in?
+      redirect_to user_url(current_user.id)
+    end
   end
 
   def show

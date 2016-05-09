@@ -8,9 +8,9 @@ class NoticesController < ApplicationController
   def create
     @notice = current_user.notices.new(notice_params)
     if @notice.save
-      redirect_to root_url
+      redirect_to root_url, notice: "Notice created"
     else
-      render :new
+      redirect_to root_url, notice: "Notice not created"
     end
   end
 
