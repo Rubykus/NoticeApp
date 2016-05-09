@@ -1,9 +1,10 @@
 <% for notice in @notices %>
     <div class="panel panel-default">
       <div class="panel-body <%= notice.color %>">
-        <p><%= notice.title %></p>
-        <p><%= notice.body %></p>
-        <p><%= notice.all_tags %></p>
+        <p><b>Title:</b><%= notice.title %></p>
+        <p><b>Body:</b><%= notice.body %></p>
+        <p><b>Tags:</b><%= notice.all_tags %></p>
+        <p><b>Category:</b><%= notice.category_id %></p>
         <%= current_user_do link_to 'Edit', edit_notice_url(notice) %>
         <%= current_user_do link_to 'Destroy', notice, method: :delete,
                     data: { confirm: 'Are you sure?'  } %>

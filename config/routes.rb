@@ -2,10 +2,9 @@ Rails.application.routes.draw do
   devise_for :users
   resources :notices
   resources :users
+  resources :categories
+
   get 'users/index'
-
-  get 'users/profile'
-
   get 'users/explore'
 
   # The priority is based upon order of creation: first created -> highest priority.

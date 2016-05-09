@@ -1,0 +1,3 @@
+<% for category in @categories %>
+    <p><%= link_to category.name, user_path(category_id: category.id), class: "btn btn-primary" %></p>
+<% end %>

@@ -10,7 +10,20 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find_by_id(params[:id])
-    @notices = Notice.all.where("user_id = ?", params[:id])
+
+    if params[:category_id].present?
+      @notices = Notice.all.where("category_id = ?", params[:category_id])
+    elsif params[:tag_name].present?
+      @notices = Notice.tagged_with(params[:tag_name])
+    else
+      @notices = Notice.all.where("user_id = ?", params[:id])
+    end
+
+    @categories = Category.all.where("user_id = ?", params[:id].to_i )
+    @new_category = Category.new
+
+    @tags = Notice.all.where("user_id = ?", params[:id]).collect{|n| n.tags}.flatten.uniq
+
   end
 
   def edit

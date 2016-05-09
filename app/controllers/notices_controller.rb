@@ -3,10 +3,18 @@ class NoticesController < ApplicationController
 
   def new
     @notice = Notice.new
+    @category_select = []
+    Category.where("user_id = ?", current_user.id).each do |c|
+      @category_select << [c.name, c.id]
+    end
   end
 
   def edit
     @notice = Notice.find_by_id(params[:id])
+    @category_select = []
+    Category.where("user_id = ?", current_user.id).each do |c|
+      @category_select << [c.name, c.id]
+    end
   end
 
   def destroy
@@ -44,7 +52,7 @@ class NoticesController < ApplicationController
   private
 
   def notice_params
-    params.require(:notice).permit(:title, :body, :all_tags, :color)
+    params.require(:notice).permit(:title, :body, :all_tags, :color, :category_id)
   end
 
 end

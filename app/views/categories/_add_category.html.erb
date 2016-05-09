@@ -1,0 +1,12 @@
+<%= form_for(@new_category) do |f| %>
+    <center>
+
+      <div class="field">
+        <%= f.text_field :name, autofocus: true %>
+      </div><br>
+
+      <div class="action">
+        <%= f.submit "Add Category" %>
+      </div>
+    </center>
+<% end %>

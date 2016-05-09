@@ -1,6 +1,6 @@
 <nav class="navbar navbar-default">
   <div class="container">
-    <a class="navbar-brand" href="#">MyApp</a>
+    <%= link_to 'NoticeApp', root_path, class: "navbar-brand" %>
     <ul class="nav navbar-nav navbar-right">
       <li><%= link_to 'Write Notice', new_notice_path %></li>
       <% if user_signed_in? %>

@@ -1,3 +1,5 @@
+<%= @tags %><br>
+<%= @tags.size %>
 <div class="row">
   <div class="col-xs-2">
     <div class="panel panel-default">
@@ -28,14 +30,19 @@
   </div>
 
   <div class="col-xs-3">
+    <div class="panel panel-default" style="text-align: center">
+      <h4>Categories</h4>
+      <%= render 'categories/categories' %>
+      <%= current_user_do render 'categories/add_category' %><br>
+    </div>
+
     <div class="panel panel-default">
-      <div class="panel-body">
-        <div class="panel panel-default">
-          <div class="panel-body">
-            <p>Categories</p>
-          </div>
-        </div>
-      </div>
+      <h4 style="text-align: center">Tags</h4><br>
+        <% for tag in @tags %>
+            <%= link_to tag.name, user_path(tag_name: tag.name), class: "btn btn-info"%>
+        <% end %>
+
     </div>
   </div>
+
 </div>
