@@ -1,2 +1,9 @@
-<%= notice.username %>
-<%= notice.title %>
+<% for notice in @notices %>
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <p><%= notice.title %></p>
+        <p><%= notice.body %></p>
+        <p><%= notice.all_tags %></p>
+      </div>
+    </div>
+<% end %>
