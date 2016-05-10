@@ -1,4 +1,5 @@
-<% for notice in @notices %>
+<% if check_delegate %>
+  <% for notice in @notices %>
     <div class="panel panel-default">
       <div class="panel-body <%= notice.color %>">
         <p><b>Title:</b><%= notice.title %></p>
@@ -10,4 +11,5 @@
                     data: { confirm: 'Are you sure?'  } %>
       </div>
     </div>
+  <% end %>
 <% end %>

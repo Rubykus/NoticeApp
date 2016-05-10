@@ -15,4 +15,9 @@ module UsersHelper
     end
   end
 
+
+  def check_delegate
+    current_user.id == params[:id].to_i || User.find_by_id(params[:id]).friends.collect { |f| f.relation }.include?(current_user.id)
+  end
+
 end

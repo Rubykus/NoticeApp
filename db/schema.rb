@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160509144648) do
+ActiveRecord::Schema.define(version: 20160510090521) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,6 +24,15 @@ ActiveRecord::Schema.define(version: 20160509144648) do
   end
 
   add_index "categories", ["user_id"], name: "index_categories_on_user_id", using: :btree
+
+  create_table "friends", force: :cascade do |t|
+    t.integer  "relation"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "friends", ["user_id"], name: "index_friends_on_user_id", using: :btree
 
   create_table "notices", force: :cascade do |t|
     t.string   "title"
@@ -75,6 +84,7 @@ ActiveRecord::Schema.define(version: 20160509144648) do
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
   add_foreign_key "categories", "users"
+  add_foreign_key "friends", "users"
   add_foreign_key "notices", "categories"
   add_foreign_key "notices", "users"
   add_foreign_key "taggings", "notices"

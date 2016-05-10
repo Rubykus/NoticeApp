@@ -25,6 +25,12 @@ class UsersController < ApplicationController
 
     @tags = Notice.all.where("user_id = ?", params[:id]).collect{|n| n.tags}.flatten.uniq.last(15)
 
+    if params[:friend_id].present? && params[:friend_id].to_i != current_user.id
+      current_user.friends.find_or_create_by!(relation: params[:friend_id].to_i)
+    end
+
+    @friends = current_user.friends.map{|f| User.find_by_id(f.relation) }
+
   end
 
   def edit
