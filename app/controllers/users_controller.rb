@@ -30,11 +30,16 @@ class UsersController < ApplicationController
     end
 
     @friends = current_user.friends.map{|f| User.find_by_id(f.relation) }
+    @user_not_friend = @users - @friends
+    if @user_not_friend.nil? && @user == @friends
+      @users
+    else
+      @users = @user_not_friend
+    end
 
   end
 
   def edit
-
   end
 
   def update
@@ -44,9 +49,6 @@ class UsersController < ApplicationController
       flash.now[:alert] = "Something went wrong. Please try again"
       render :edit
     end
-  end
-
-  def explore
   end
 
   private

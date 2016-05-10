@@ -1,2 +1,11 @@
-<h1>Users#index</h1>
-<p>Find me in app/views/users/index.html.erb</p>
+<style>
+  body {
+    background: linear-gradient(rgba(0,0,0, 0.4), rgba(0,0,0, 0.4)),
+    url('/background.jpg') no-repeat center center fixed;
+  }
+</style>
+<h1 class="text-center" style="margin-top: 12%; font-size: 600%; color: #DADADA">NoticeApp</h1>
+<h2 class="text-center" style="margin-top: 5%; color: gainsboro">
+  Please <%= link_to 'Sign in', new_user_session_path, class: "btn btn-success btn-lg" %> or
+  <%= link_to 'Sign up', new_user_registration_path, class: "btn btn-info btn-lg" %>
+</h2>

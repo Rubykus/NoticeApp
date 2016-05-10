@@ -13,29 +13,7 @@
       </div>
     </div>
 
-    <div class="panel panel-default">
-      <% if current_user.id == params[:id].to_i %>
-      <p class="text-center">Explore</p>
-        <ul>
-          <% for user in @users %>
-              <li><%= link_to user.username, user_path(user.id) %></li>
-              <%= link_to "+", user_path(friend_id: user.id) %>
-          <% end %>
-        </ul>
-      <% end %>
-    </div>
-
-    <div class="panel panel-default">
-      <% if current_user.id == params[:id].to_i %>
-          <p class="text-center">Friends</p>
-          <ul>
-            <% for friend in @friends %>
-                <li><%= link_to friend.username, user_path(friend.id) %></li>
-            <% end %>
-          </ul>
-      <% end %>
-    </div>
-
+    <%= render 'user_list' %>
   </div>
 
   <div class="col-xs-7">

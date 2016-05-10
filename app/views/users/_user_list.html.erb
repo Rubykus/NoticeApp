@@ -1,0 +1,24 @@
+<% if current_user.id == params[:id].to_i %>
+    <% unless @users.empty? %>
+      <div class="panel panel-default">
+        <div class="text-center">
+          <p>Explore</p>
+          <% for user in @users %>
+              <%= link_to user.username, user_path(user.id) %>
+              <%= link_to '', user_path(friend_id: user.id), class: "glyphicon glyphicon-plus" %><br>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+
+    <% unless @friends.empty? %>
+      <div class="panel panel-default">
+        <div class="text-center">
+          <p class="text-center">Friends</p>
+          <% for friend in @friends %>
+              <%= link_to friend.username, user_path(friend.id) %><br>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+<% end %>
